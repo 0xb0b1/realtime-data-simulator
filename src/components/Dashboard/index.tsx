@@ -1,12 +1,12 @@
-import { useSimulation } from "../../hooks/useSimulation";
+// import { useSimulation } from "../../hooks/useSimulation";
 import { Container } from "./styles";
 
 function Dashboard() {
-  const { myData } = useSimulation();
+  // const { myData } = useSimulation();
 
   return (
     <Container>
-      <h1></h1>
+      <h1>hello</h1>
     </Container>
   );
 }

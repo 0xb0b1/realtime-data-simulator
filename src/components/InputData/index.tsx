@@ -1,14 +1,13 @@
 import { FormEvent, useState } from "react";
+import { Link, Route, Router, Switch, useHistory } from "react-router-dom";
 import { useSimulation } from "../../hooks/useSimulation";
+import Dashboard from "../Dashboard";
 // import Dashboard from "../Dashboard";
 import { Container } from "./styles";
 
-interface InputDataProps {
-  onSubmit: () => void;
-}
-
-function InputData(onSubmit: InputDataProps) {
+function InputData() {
   const { createSimulation } = useSimulation();
+  const { push } = useHistory();
 
   const [minimum, setMinimum] = useState(0);
   const [maximum, setMaximum] = useState(0);
@@ -29,53 +28,53 @@ function InputData(onSubmit: InputDataProps) {
   }
 
   return (
-    <>
-      <Container onSubmit={handleCreateSimulationData}>
-        <label>
-          Minimum value:
-          <input
-            type="number"
-            value={minimum}
-            placeholder="Minimum value"
-            onChange={(event) => setMinimum(Number(event.target.value))}
-          />
-        </label>
+    <Container onSubmit={handleCreateSimulationData}>
+      <label>
+        Minimum value:
+        <input
+          type="number"
+          value={minimum}
+          placeholder="Minimum value"
+          onChange={(event) => setMinimum(Number(event.target.value))}
+        />
+      </label>
 
-        <label>
-          Maximum value:
-          <input
-            type="number"
-            value={maximum}
-            placeholder="Maximum value"
-            onChange={(event) => setMaximum(Number(event.target.value))}
-          />
-        </label>
+      <label>
+        Maximum value:
+        <input
+          type="number"
+          value={maximum}
+          placeholder="Maximum value"
+          onChange={(event) => setMaximum(Number(event.target.value))}
+        />
+      </label>
 
-        <label>
-          Frequency
-          <input
-            type="number"
-            value={frequency}
-            placeholder="Frequency points/second"
-            onChange={(event) => setFrequency(Number(event.target.value))}
-          />
-        </label>
+      <label>
+        Frequency
+        <input
+          type="number"
+          value={frequency}
+          placeholder="Frequency points/second"
+          onChange={(event) => setFrequency(Number(event.target.value))}
+        />
+      </label>
 
-        <label>
-          Interval in seconds
-          <input
-            type="number"
-            value={simulationInterval}
-            placeholder="Interval in seconds"
-            onChange={(event) =>
-              setSimulationInterval(Number(event.target.value))
-            }
-          />
-        </label>
+      <label>
+        Interval in seconds
+        <input
+          type="number"
+          value={simulationInterval}
+          placeholder="Interval in seconds"
+          onChange={(event) =>
+            setSimulationInterval(Number(event.target.value))
+          }
+        />
+      </label>
 
-        <button type="submit">RUN</button>
-      </Container>
-    </>
+      <button onClick={() => push("/dashboard")} type="submit">
+        RUN
+      </button>
+    </Container>
   );
 }
 
