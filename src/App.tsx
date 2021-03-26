@@ -1,15 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 // import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Header from "./components/Header";
 
 import InputData from "./components/InputData";
+import { SimulationProvider } from "./hooks/useSimulation";
 
 function App() {
+  const [dashboard, setDashboard] = useState("");
+
+  function createDashboard() {
+    //
+  }
   return (
-    <div>
+    <SimulationProvider>
       <Header />
       <InputData />
-    </div>
+    </SimulationProvider>
   );
 }
 

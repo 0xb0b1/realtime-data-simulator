@@ -1,35 +1,29 @@
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useState } from "react";
 import { useSimulation } from "../../hooks/useSimulation";
-import { api } from "../../services/api";
 import { Container } from "./styles";
 
 function InputData() {
-  // const { createSimulation } = useSimulation();
+  const { createSimulation, createDashboard } = useSimulation();
 
   const [minimum, setMinimum] = useState(0);
   const [maximum, setMaximum] = useState(0);
   const [frequency, setFrequency] = useState(0);
   const [simulationInterval, setSimulationInterval] = useState(0);
 
-  useEffect(() => {
-    api.get("/data").then((response) => console.log(response.data));
-  });
-
   async function handleCreateSimulationData(event: FormEvent) {
     event.preventDefault();
 
-    console.log({
+    await createSimulation({
       maximum,
       minimum,
       frequency,
       simulationInterval,
     });
 
-    setMinimum(0);
-    setMaximum(0);
-    setFrequency(0);
-    setSimulationInterval(0);
+    createDashboard();
   }
+
+  // createDashboard();
 
   return (
     <>

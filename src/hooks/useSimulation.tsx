@@ -11,41 +11,46 @@ interface DataSimulationProps {
   minimum: number;
   maximum: number;
   frequency: number;
-  interval: number;
+  simulationInterval: number;
 }
+
+// type DataInput = Omit<DataSimulationProps, "id">;
 
 interface SimulationProviderProps {
   children: ReactNode;
 }
 
 interface SimulationContextData {
-  data: DataSimulationProps[];
+  myData: DataSimulationProps[];
   createSimulation: (data: DataSimulationProps) => Promise<void>;
 }
 
 export const SimulationContext = createContext({} as SimulationContextData);
 
 export function SimulationProvider({ children }: SimulationProviderProps) {
-  const [data, setData] = useState<DataSimulationProps[]>([]);
+  const [myData, setMyData] = useState<DataSimulationProps[]>([]);
 
   useEffect(() => {
-    api.get("/data").then((response) => setData(response.data.data));
+    api.get("/data").then((response) => setMyData(response.data.myData));
   }, []);
 
+  // function to save the data on the fake API
+  // we'll be fetching this data from the dashboard
   async function createSimulation(dataInput: DataSimulationProps) {
-    const response = await api.post("/data", {
-      ...dataInput,
-    });
+    const response = await api.post("/data", dataInput);
 
-    const { data } = response.data;
+    const { myDataNew } = response.data;
 
-    setData([data]);
+    setMyData([myDataNew]);
   }
 
+  // creating the dashboard
+  function createDashboard() {}
+
   return (
-    <SimulationContext.Provider
-      value={{ data, createSimulation }}
-    ></SimulationContext.Provider>
+    <SimulationContext.Provider value={{ myData, createSimulation }}>
+      {children}
+    </SimulationContext.Provider>
   );
 }
 
