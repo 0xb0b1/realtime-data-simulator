@@ -23,8 +23,6 @@ function InputData() {
     });
 
     push("/dashboard");
-
-    // create dashboard
   }
 
   return (
