@@ -1,8 +1,6 @@
 import { FormEvent, useState } from "react";
-import { Link, Route, Router, Switch, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useSimulation } from "../../hooks/useSimulation";
-import Dashboard from "../Dashboard";
-// import Dashboard from "../Dashboard";
 import { Container } from "./styles";
 
 function InputData() {
@@ -23,6 +21,8 @@ function InputData() {
       frequency,
       simulationInterval,
     });
+
+    push("/dashboard");
 
     // create dashboard
   }
@@ -71,9 +71,7 @@ function InputData() {
         />
       </label>
 
-      <button onClick={() => push("/dashboard")} type="submit">
-        RUN
-      </button>
+      <button type="submit">RUN</button>
     </Container>
   );
 }

@@ -1,4 +1,5 @@
 // import { useSimulation } from "../../hooks/useSimulation";
+
 import { Container } from "./styles";
 
 function Dashboard() {

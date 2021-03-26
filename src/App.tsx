@@ -6,10 +6,13 @@ import Header from "./components/Header";
 
 import InputData from "./components/InputData";
 import { SimulationProvider } from "./hooks/useSimulation";
+import { GlobalStyle } from "./styles/global";
 
 function App() {
   return (
     <SimulationProvider>
+      <GlobalStyle />
+
       <Header />
 
       <Router>

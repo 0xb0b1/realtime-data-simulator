@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 export const Container = styled.header`
   text-align: center;
-  margin-top: 5rem;
+  margin-bottom: 5rem;
 
-  color: #969cb3;
+  color: #000;
+  background: #e7e9ee;
 `;
