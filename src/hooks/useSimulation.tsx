@@ -25,7 +25,7 @@ interface SimulationContextData {
   createSimulation: (data: DataSimulationProps) => Promise<void>;
 }
 
-export const SimulationContext = createContext({} as SimulationContextData);
+const SimulationContext = createContext({} as SimulationContextData);
 
 export function SimulationProvider({ children }: SimulationProviderProps) {
   const [myData, setMyData] = useState<DataSimulationProps[]>([]);
@@ -45,7 +45,7 @@ export function SimulationProvider({ children }: SimulationProviderProps) {
   }
 
   // creating the dashboard
-  function createDashboard() {}
+  // function createDashboard() {}
 
   return (
     <SimulationContext.Provider value={{ myData, createSimulation }}>

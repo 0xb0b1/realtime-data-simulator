@@ -3,29 +3,37 @@ import styled from "styled-components";
 export const Container = styled.form`
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
 
-  input {
-    width: 100%;
-    max-width: 568px;
+  label {
+    color: #000;
 
-    padding: 0 1.5rem;
-    height: 4rem;
-    border-radius: 0.25rem;
-    border: 1px solid #d7d7d7;
-    background: #e7e9ee;
-
-    &::placeholder {
-      color: #969cb3;
-    }
-
-    & + input {
+    & + label {
       margin-top: 1rem;
     }
 
-    @media (max-width: 720px) {
-      max-width: 60vw;
+    input {
+      width: 568px;
+
+      display: flex;
+
+      padding: 0 1.5rem;
+      height: 4rem;
+      border-radius: 0.25rem;
+      border: 1px solid #d7d7d7;
+      background: #e7e9ee;
+
+      &::placeholder {
+        color: #969cb3;
+      }
+
+      & + input {
+        margin-top: 1rem;
+      }
+
+      @media (max-width: 720px) {
+        max-width: 72vw;
+      }
     }
   }
 
