@@ -15,6 +15,7 @@ function InputData() {
   async function handleCreateSimulationData(event: FormEvent) {
     event.preventDefault();
 
+    // creating the dynamic data
     await createSimulation({
       maximum,
       minimum,
@@ -22,6 +23,7 @@ function InputData() {
       simulationInterval,
     });
 
+    // the dashboard will only be shown if the data created in the API
     push("/dashboard");
   }
 
