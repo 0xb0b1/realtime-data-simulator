@@ -3,11 +3,9 @@
 import { Container } from "./styles";
 
 function Dashboard() {
-  // const { myData } = useSimulation();
-
   return (
     <Container>
-      <h1>hello</h1>
+      <h1>Dashboard</h1>
     </Container>
   );
 }

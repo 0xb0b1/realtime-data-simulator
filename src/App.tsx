@@ -1,16 +1,17 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
 import Dashboard from "./components/Dashboard";
-// import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Header from "./components/Header";
 
 import InputData from "./components/InputData";
-import { SimulationProvider } from "./hooks/useSimulation";
+import { SimulationDataProvider } from "./hooks/useSimulation";
+
 import { GlobalStyle } from "./styles/global";
 
 function App() {
   return (
-    <SimulationProvider>
+    <SimulationDataProvider>
       <GlobalStyle />
 
       <Header />
@@ -26,7 +27,7 @@ function App() {
           </Route>
         </Switch>
       </Router>
-    </SimulationProvider>
+    </SimulationDataProvider>
   );
 }
 

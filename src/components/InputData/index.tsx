@@ -4,7 +4,7 @@ import { useSimulation } from "../../hooks/useSimulation";
 import { Container } from "./styles";
 
 function InputData() {
-  const { createSimulation } = useSimulation();
+  const { saveData } = useSimulation();
   const { push } = useHistory();
 
   const [minimum, setMinimum] = useState(0);
@@ -16,9 +16,9 @@ function InputData() {
     event.preventDefault();
 
     // creating the dynamic data
-    await createSimulation({
-      maximum,
+    await saveData({
       minimum,
+      maximum,
       frequency,
       simulationInterval,
     });

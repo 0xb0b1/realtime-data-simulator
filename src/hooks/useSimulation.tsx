@@ -1,11 +1,4 @@
-import {
-  createContext,
-  ReactNode,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
-import { api } from "../services/api";
+import { Context, createContext, ReactNode, useContext } from "react";
 
 interface DataSimulationProps {
   minimum: number;
@@ -14,41 +7,28 @@ interface DataSimulationProps {
   simulationInterval: number;
 }
 
-// type DataInput = Omit<DataSimulationProps, "id">;
-
-interface SimulationProviderProps {
+interface SimulationDataProviderProps {
   children: ReactNode;
 }
 
 interface SimulationContextData {
-  myData: DataSimulationProps[];
-  createSimulation: (data: DataSimulationProps) => Promise<void>;
+  saveData: (data: DataSimulationProps) => void;
 }
 
-const SimulationContext = createContext({} as SimulationContextData);
+const SimulationContext: Context<SimulationContextData> = createContext(
+  {} as SimulationContextData
+);
 
-export function SimulationProvider({ children }: SimulationProviderProps) {
-  const [myData, setMyData] = useState<DataSimulationProps[]>([]);
-
-  useEffect(() => {
-    api.get("/data").then((response) => setMyData(response.data.myData));
-  }, []);
-
-  // function to save the data on the fake API
-  // we'll be fetching this data from the dashboard
-  async function createSimulation(dataInput: DataSimulationProps) {
-    const response = await api.post("/data", dataInput);
-
-    const { myDataNew } = response.data;
-
-    setMyData([myDataNew]);
+export function SimulationDataProvider({
+  children,
+}: SimulationDataProviderProps) {
+  // function to save the data to localStorage
+  function saveData(dataInput: DataSimulationProps) {
+    localStorage.setItem("data", JSON.stringify(dataInput));
   }
 
-  // creating the dashboard
-  // function createDashboard() {}
-
   return (
-    <SimulationContext.Provider value={{ myData, createSimulation }}>
+    <SimulationContext.Provider value={{ saveData }}>
       {children}
     </SimulationContext.Provider>
   );
