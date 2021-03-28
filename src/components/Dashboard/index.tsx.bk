@@ -1,0 +1,67 @@
+import { useEffect, useState } from "react";
+import { Line } from "@reactchartjs/react-chart.js";
+import { Container } from "./styles";
+
+function Dashboard() {
+  const randomData = () => Math.round(Math.random() * (10 - 1) + 1);
+
+  // generate a random number between minimum and maximum
+  const minimumSimulatedValue = 1;
+  const maximumSimulatedValue = 10;
+
+  const genData = () => ({
+    labels: Array.from(
+      { length: maximumSimulatedValue - minimumSimulatedValue + 1 },
+      (_, i) => i + minimumSimulatedValue
+    ),
+    datasets: [
+      {
+        label: "###",
+        data: [
+          randomData(),
+          randomData(),
+          randomData(),
+          randomData(),
+          randomData(),
+          randomData(),
+          randomData(),
+          randomData(),
+          randomData(),
+          randomData(),
+        ],
+        fill: false,
+        backgroundColor: "rgb(255, 99, 132",
+        borderColor: "rgba(255, 99, 132, 0.2)",
+        borderWidth: 1,
+      },
+    ],
+  });
+
+  const options = {
+    scales: {
+      yAxes: [
+        {
+          ticks: {
+            beginAtZero: true,
+          },
+        },
+      ],
+    },
+  };
+
+  const [data, setData] = useState(genData);
+
+  useEffect(() => {
+    const interval = setInterval(() => setData(genData()), 5000);
+
+    return () => clearInterval(interval);
+  });
+
+  return (
+    <Container>
+      <Line data={data} options={options} width={320} type="line" />
+    </Container>
+  );
+}
+
+export default Dashboard;

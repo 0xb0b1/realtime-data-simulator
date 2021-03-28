@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0 5rem;
 `;
