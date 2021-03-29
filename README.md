@@ -35,6 +35,7 @@ This project was made using the follow technologies:
 
 * CSS
 * ReactJS - UI 
+* Context API
 * TypeScript
 * Chartjs - to create de chart
 * Netlify - deploy
