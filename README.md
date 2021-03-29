@@ -44,6 +44,7 @@ This project was made using the follow technologies:
 - Add maximum value
 - Add a frequency points/second
 - Add a Interval in seconds
+- Show points in [x,y]
 
 # :construction_worker: How to run
 **close the repo and:**
