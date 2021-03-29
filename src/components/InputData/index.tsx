@@ -12,11 +12,11 @@ function InputData() {
   const [frequency, setFrequency] = useState(0);
   const [simulationInterval, setSimulationInterval] = useState(1);
 
-  async function handleCreateSimulationData(event: FormEvent) {
+  function handleCreateSimulationData(event: FormEvent) {
     event.preventDefault();
 
     // creating the dynamic data
-    await saveData({
+    saveData({
       minimum,
       maximum,
       frequency,

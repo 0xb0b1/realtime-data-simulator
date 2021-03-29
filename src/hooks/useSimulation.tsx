@@ -39,7 +39,7 @@ export function SimulationDataProvider({
   }, []);
 
   // function to save the data to localStorage
-  async function saveData(dataInput: DataSimulationProps) {
+  function saveData(dataInput: DataSimulationProps) {
     localStorage.setItem("data", JSON.stringify(dataInput));
   }
 

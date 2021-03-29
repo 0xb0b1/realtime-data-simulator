@@ -6,16 +6,15 @@ import LineGraph from "../LineGraph";
 function Dashboard() {
   const { myData } = useSimulation();
 
-  const min: number = myData.min;
-  const max: number = myData.max;
+  console.log(myData.min);
 
   let XAxis: number = 0;
 
   return (
     <Container>
       <LineGraph
-        min={min}
-        max={max}
+        min={myData.minimum}
+        max={myData.maximum}
         intervalSec={myData.simulationInterval}
         XAxis={XAxis}
       />

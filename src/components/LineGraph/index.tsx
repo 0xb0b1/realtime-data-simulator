@@ -26,6 +26,7 @@ function LineGraph({ min, max, XAxis, intervalSec }: LineGraphProps) {
         labels: [],
         datasets: [
           {
+            label: "X: 0, Y: 0",
             data: [],
             fill: true,
             backgroundColor: "#33cc91",
@@ -39,10 +40,16 @@ function LineGraph({ min, max, XAxis, intervalSec }: LineGraphProps) {
         scales: {
           yAxes: [
             {
+              display: true,
               ticks: {
-                beginAtZero: false,
+                beginAtZero: true,
                 suggestedMin: 0,
               },
+            },
+          ],
+          xAxes: [
+            {
+              display: true,
             },
           ],
         },
@@ -55,8 +62,12 @@ function LineGraph({ min, max, XAxis, intervalSec }: LineGraphProps) {
       chart.data.datasets.forEach((dataset: any) => {
         dataset.data.push(data);
       });
+      chart.data.datasets[0].label = `X: ${label}, Y: ${data}`;
+
       chart.update();
     };
+
+    const showPointXY = () => {};
 
     // live updating the chart adding a new point[x, y].
     setInterval(() => {
