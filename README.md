@@ -23,7 +23,8 @@
 
 <br />
 <div align="center">
-  <img src="https://github.com/0xb0b1/realtime-data-simulator/blob/master/screenshot.jpg" width="720">
+  <img src="https://github.com/0xb0b1/realtime-data-simulator/blob/master/home.jpg" width="520">
+  <img src="https://github.com/0xb0b1/realtime-data-simulator/blob/master/dashboard.jpg" width="520">
 </div>
 
 # :eyes: Demo Website
