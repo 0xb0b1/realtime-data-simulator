@@ -1,17 +1,21 @@
 import Chart from "chart.js";
 import React, { useEffect } from "react";
+import { useSimulation } from "../../hooks/useSimulation";
 
 import { Container } from "./styles";
 
 interface LineGraphProps {
-  min: number;
-  max: number;
   XAxis: number;
   intervalSec: number;
 }
 
-function LineGraph({ min, max, XAxis, intervalSec }: LineGraphProps) {
+function LineGraph({ XAxis, intervalSec }: LineGraphProps) {
   const chartRef: any = React.createRef();
+
+  const { myData } = useSimulation();
+
+  const min: any = myData.minimum;
+  const max: any = myData.maximum;
 
   useEffect(() => {
     buildChart();
@@ -44,12 +48,18 @@ function LineGraph({ min, max, XAxis, intervalSec }: LineGraphProps) {
               ticks: {
                 beginAtZero: true,
                 suggestedMin: 0,
+                min: min,
+                max: max,
               },
             },
           ],
           xAxes: [
             {
               display: true,
+              ticks: {
+                beginAtZero: true,
+                min: min,
+              },
             },
           ],
         },
@@ -57,7 +67,7 @@ function LineGraph({ min, max, XAxis, intervalSec }: LineGraphProps) {
     });
 
     // function to add a new XAxe, point[x, y].
-    const addData = (chart: any, label: any, data: any) => {
+    const addData = (chart: any, label: number, data: number) => {
       chart.data.labels.push(label);
       chart.data.datasets.forEach((dataset: any) => {
         dataset.data.push(data);
@@ -66,8 +76,6 @@ function LineGraph({ min, max, XAxis, intervalSec }: LineGraphProps) {
 
       chart.update();
     };
-
-    const showPointXY = () => {};
 
     // live updating the chart adding a new point[x, y].
     setInterval(() => {
