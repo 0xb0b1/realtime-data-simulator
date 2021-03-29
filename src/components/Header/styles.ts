@@ -2,8 +2,10 @@ import styled from "styled-components";
 
 export const Container = styled.header`
   text-align: center;
-  margin-bottom: 5rem;
+  margin-bottom: 2rem;
 
   color: #000;
-  background: #e7e9ee;
+  background: #fff;
+
+  padding: 1.5rem;
 `;
