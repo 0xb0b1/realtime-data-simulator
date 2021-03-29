@@ -1,6 +1,4 @@
-import { deepStrictEqual } from "assert";
 import Chart from "chart.js";
-import { range } from "d3";
 import React, { useEffect } from "react";
 
 import { Container } from "./styles";
@@ -8,10 +6,11 @@ import { Container } from "./styles";
 interface LineGraphProps {
   min: number;
   max: number;
+  XAxis: number;
   intervalSec: number;
 }
 
-function LineGraph({ min, max, intervalSec }: LineGraphProps) {
+function LineGraph({ min, max, XAxis, intervalSec }: LineGraphProps) {
   const chartRef: any = React.createRef();
 
   useEffect(() => {
@@ -41,6 +40,7 @@ function LineGraph({ min, max, intervalSec }: LineGraphProps) {
           yAxes: [
             {
               ticks: {
+                beginAtZero: true,
                 max: max,
                 min: min,
               },
@@ -50,6 +50,7 @@ function LineGraph({ min, max, intervalSec }: LineGraphProps) {
       },
     });
 
+    // function to add a new XAxe, point[x, y].
     const addData = (chart: any, label: any, data: any) => {
       chart.data.labels.push(label);
       chart.data.datasets.forEach((dataset: any) => {
@@ -58,13 +59,10 @@ function LineGraph({ min, max, intervalSec }: LineGraphProps) {
       chart.update();
     };
 
+    // live updating the chart adding a new point[x, y].
     setInterval(() => {
-      addData(
-        myLineChart,
-        intervalSec++,
-        Math.floor(Math.random() * (11 - 1) + 1)
-      );
-    }, 1000);
+      addData(myLineChart, XAxis++, Math.floor(Math.random() * (11 - 1) + 1));
+    }, intervalSec * 1000);
   };
 
   return (
