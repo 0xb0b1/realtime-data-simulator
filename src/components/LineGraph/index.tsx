@@ -47,7 +47,7 @@ function LineGraph({ XAxis, intervalSec }: LineGraphProps) {
               display: true,
               ticks: {
                 beginAtZero: true,
-                suggestedMin: 0,
+                suggestedMin: min,
                 min: min,
                 max: max,
               },
@@ -79,7 +79,11 @@ function LineGraph({ XAxis, intervalSec }: LineGraphProps) {
 
     // live updating the chart adding a new point[x, y].
     setInterval(() => {
-      addData(myLineChart, XAxis++, Math.floor(Math.random() * (11 - 1) + 1));
+      addData(
+        myLineChart,
+        XAxis++,
+        Math.floor(Math.random() * (max - min) + min)
+      );
     }, intervalSec * 1000);
   };
 
