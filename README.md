@@ -28,7 +28,7 @@
 </div>
 
 # :eyes: Demo Website
-👉  demo: https://0xb0b1.github.io/realtime-data-simulator
+👉  demo: https://realtime-data-simulator-chartjs-react.netlify.ap
 
 # :computer: Technologies
 This project was made using the follow technologies:
