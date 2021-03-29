@@ -4,18 +4,16 @@ import { useSimulation } from "../../hooks/useSimulation";
 
 import { Container } from "./styles";
 
-interface LineGraphProps {
-  XAxis: number;
-  intervalSec: number;
-}
-
-function LineGraph({ XAxis, intervalSec }: LineGraphProps) {
+function LineGraph() {
   const chartRef: any = React.createRef();
 
   const { myData } = useSimulation();
 
   const min: any = myData.minimum;
   const max: any = myData.maximum;
+
+  let XAxis: number = 0;
+  let intervalSec = myData.simulationInterval;
 
   useEffect(() => {
     buildChart();
