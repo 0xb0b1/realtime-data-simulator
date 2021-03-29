@@ -28,21 +28,24 @@ function LineGraph({ min, max, intervalSec }: LineGraphProps) {
         datasets: [
           {
             data: [],
-            fill: false,
-            borderColor: "#33cc95",
+            fill: true,
+            backgroundColor: "#33cc91",
+            borderColor: "#41856C",
           },
         ],
       },
       options: {
         responsive: true,
         maintainAspectRatio: false,
-        layout: {
-          padding: {
-            top: 5,
-            left: 15,
-            right: 15,
-            bottom: 15,
-          },
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                max: max,
+                min: min,
+              },
+            },
+          ],
         },
       },
     });
@@ -59,7 +62,7 @@ function LineGraph({ min, max, intervalSec }: LineGraphProps) {
       addData(
         myLineChart,
         intervalSec++,
-        Math.floor(Math.random() * (10 - 1) + 1)
+        Math.floor(Math.random() * (11 - 1) + 1)
       );
     }, 1000);
   };
