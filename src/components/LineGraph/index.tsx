@@ -40,9 +40,8 @@ function LineGraph({ min, max, XAxis, intervalSec }: LineGraphProps) {
           yAxes: [
             {
               ticks: {
-                beginAtZero: true,
-                max: max,
-                min: min,
+                beginAtZero: false,
+                suggestedMin: 0,
               },
             },
           ],

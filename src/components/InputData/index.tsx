@@ -10,7 +10,7 @@ function InputData() {
   const [minimum, setMinimum] = useState(0);
   const [maximum, setMaximum] = useState(0);
   const [frequency, setFrequency] = useState(0);
-  const [simulationInterval, setSimulationInterval] = useState(0);
+  const [simulationInterval, setSimulationInterval] = useState(1);
 
   async function handleCreateSimulationData(event: FormEvent) {
     event.preventDefault();
