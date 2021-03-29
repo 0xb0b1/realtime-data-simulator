@@ -56,5 +56,5 @@ yarn
 yarn start 
 ```
 
-Or open the demo I deployed [demo](https://realtime-data-simulator-chartjs-react.netlify.app/) with your browser to see the result.
+Or open the [demo](https://realtime-data-simulator-chartjs-react.netlify.app/) demo I deployed.
 <br>
