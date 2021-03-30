@@ -23,17 +23,20 @@
 
 <br />
 <div align="center">
-  <img src="https://github.com/0xb0b1/realtime-data-simulator/blob/master/screenshot.jpg" width="720">
+  <img src="https://github.com/0xb0b1/realtime-data-simulator/blob/master/home.jpg" width="520">
+  <img src="https://github.com/0xb0b1/realtime-data-simulator/blob/master/dashboard.jpg" width="520">
 </div>
 
 # :eyes: Demo Website
-👉  demo: https://0xb0b1.github.io/realtime-data-simulator
+👉  demo: https://realtime-data-simulator-chartjs-react.netlify.app
 
 # :computer: Technologies
 This project was made using the follow technologies:
 
 * CSS
 * ReactJS - UI 
+* Context API
+* localStorage
 * TypeScript
 * Chartjs - to create de chart
 * Netlify - deploy
@@ -43,6 +46,8 @@ This project was made using the follow technologies:
 - Add maximum value
 - Add a frequency points/second
 - Add a Interval in seconds
+- Show points in [x,y]
+- Save data to localStorage
 
 # :construction_worker: How to run
 **close the repo and:**
