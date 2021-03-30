@@ -20,7 +20,7 @@ interface SimulationDataProviderProps {
 
 interface SimulationContextData {
   myData: any;
-  saveData: (data: DataSimulationProps) => void;
+  saveData: (data: DataSimulationProps) => Promise<void>;
 }
 
 const SimulationContext: Context<SimulationContextData> = createContext(
@@ -33,14 +33,14 @@ export function SimulationDataProvider({
   const [myData, setMyData] = useState({});
 
   useEffect(() => {
-    const data: any = localStorage.getItem("data");
+    const data: any = localStorage.getItem("myCustomChartData");
 
     setMyData(JSON.parse(data));
   }, []);
 
   // function to save the data to localStorage
-  function saveData(dataInput: DataSimulationProps) {
-    localStorage.setItem("data", JSON.stringify(dataInput));
+  async function saveData(dataInput: DataSimulationProps) {
+    localStorage.setItem("myCustomChartData", JSON.stringify(dataInput));
   }
 
   return (
